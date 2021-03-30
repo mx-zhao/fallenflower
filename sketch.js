@@ -7,7 +7,7 @@ let sec = 0;
 
 function setup() {
   createCanvas(600, 900);
-  frameRate(5);
+  frameRate(3);
   
   for(let i = 0; i < txt.length - order; i++){
     let gram = txt.substring(i, i + order);
@@ -38,7 +38,7 @@ if(sec < 1){
     sec = 0;
   }
   for(let a = 0; a < 14; a++){
-   for(let b = 0; b < 12; b++){
+   for(let b = 0; b < 11; b++){
     stroke(0, 50);
     let count = a + b * 14;
     if(count < (sec + 2)){
