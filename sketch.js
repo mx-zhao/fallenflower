@@ -7,7 +7,7 @@ let sec = 0;
 
 function setup() {
   createCanvas(600, 900);
-  frameRate(3);
+  frameRate(2);
   
   for(let i = 0; i < txt.length - order; i++){
     let gram = txt.substring(i, i + order);
@@ -57,7 +57,7 @@ if(sec < 1){
     
     }
   }
-  markovIt();
+  ngram();
   
   for(a = 0; a < 14; a++){
     for(b = 0; b < 12; b++){
@@ -66,10 +66,6 @@ if(sec < 1){
       if(count < (sec + 2)){
         stroke(226, 197, 137, 150);
       }
-
-  //strokeWeight(2);
-  //line(a * 25 + 2, b * 36 + 9, a * 25 + 22, b * 36 + 29);
-  //line(a * 25 + 2, b * 36 + 29, a * 25 + 22, b * 36 + 9);
 
   noFill();
   stroke(226, 197, 137, 50);
@@ -85,23 +81,19 @@ if(sec < 1){
 
 }
 
-function markovIt(){
+function ngram(){
   let currentGram = txt.substring(0, order);
   let result = currentGram;
   
   for(let j = 0; j < frameCount; j++){
     let possibilities = ngrams[currentGram];
     if(!possibilities){
-      //break;
       possibilities = "花";
 
     }
-    
-    //randomSeed(mouseX/width * 10000);
+   
     let next = random(possibilities);
-    if(next == "花"){
-      //fill(255);
-    }
+
     result += next;
     let len = result.length;
     currentGram = result.substring(len - order, len);
