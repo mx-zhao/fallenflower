@@ -7,7 +7,6 @@ let sec = 0;
 
 function setup() {
   createCanvas(600, 900);
-  frameRate(1.5);
   
   for(let i = 0; i < txt.length - order; i++){
     let gram = txt.substring(i, i + order);
@@ -24,6 +23,8 @@ function setup() {
 }
 
 function draw(){
+  
+frameRate(frameCount / 80 + 0.7);
   
 if(sec < 1){
   background(226, 197, 137);
