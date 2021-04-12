@@ -7,34 +7,37 @@ let sec = 0;
 
 function setup() {
   createCanvas(600, 900);
+
   
   for(let i = 0; i < txt.length - order; i++){
-    let gram = txt.substring(i, i + order);
+    let word = txt.substring(i, i + order);
     
-    if (!ngrams[gram]){
+    if (!ngrams[word]){
       
-      ngrams[gram] = [];
-      ngrams[gram].push(txt.charAt(i + order));
+      ngrams[word] = [];
+      ngrams[word].push(txt.charAt(i + order));
     }
     else{
-      ngrams[gram].push(txt.charAt(i + order));
+      ngrams[word].push(txt.charAt(i + order));
     }
   }
 }
 
 function draw(){
   
-frameRate(frameCount / 80 + 0.7);
+    frameRate(((frameCount / 200) * (frameCount / 200) + 0.1) * 3 + 1);
+
   
-if(sec < 1){
+if(sec < 2){
   background(226, 197, 137);
   }
   else{
   background(226, 197, 137, 150);
     }
+
   
   sec++;
-  if(sec > 400){
+  if(sec > 200){
     frameCount = 0;
     sec = 0;
   }
@@ -83,21 +86,21 @@ if(sec < 1){
 }
 
 function ngram(){
-  let currentGram = txt.substring(0, order);
-  let result = currentGram;
+  let current = txt.substring(0, order);
+  let result = current;
   
   for(let j = 0; j < frameCount; j++){
-    let possibilities = ngrams[currentGram];
-    if(!possibilities){
-      possibilities = "花";
+    let possibility = ngrams[current];
+    if(!possibility){
+      possibility = "花";
 
     }
-   
-    let next = random(possibilities);
-
+    
+  
+    let next = random(possibility);
     result += next;
     let len = result.length;
-    currentGram = result.substring(len - order, len);
+    current = result.substring(len - order, len);
   }
   textAlign(LEFT, TOP);
   textStyle(BOLD);
